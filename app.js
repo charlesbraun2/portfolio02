@@ -704,7 +704,7 @@ function updateSlideshowUI(imgs, title) {
   const isPath = src && (src.startsWith("assets/") || src.startsWith("/") || src.startsWith("http"));
  
   container.innerHTML = isPath
-    ? `<img src="${src}" alt="${title}" class="w-full h-full object-cover object-top">`
+    ? `<img src="${src}" alt="${title}" class="w-full h-full object-cover object-top" style="min-height:280px;">`
     : `<div class="w-full h-full shimmer-bg flex items-center justify-center text-center px-6">
         <span class="text-portfolio-cream/50 font-bold text-sm tracking-widest uppercase">
           ${title}<br/><span class="text-xs opacity-60">(${src})</span>
