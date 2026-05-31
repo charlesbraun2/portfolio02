@@ -738,7 +738,7 @@ function renderFeaturedProject() {
   container.innerHTML = `
     <div class="flex flex-wrap w-full">
       <!-- Image / Slideshow section -->
-      <div class="w-full md:w-1/2 relative overflow-hidden bg-black/20 self-stretch min-h-[280px] h-[280px] md:h-auto">
+      <div class="w-full md:w-1/2 relative overflow-hidden bg-black/20 self-stretch min-h-[260px] h-[260px] md:h-[420px]">
         <div id="featured-slideshow-img" class="w-full h-full absolute inset-0"
           ${(featuredProject.categories.includes("graphic") || featuredProject.categories.includes("traditional"))
             ? `onclick="openGraphicModal(${featuredProject.id}, 0)" style="cursor:pointer;"`
@@ -1326,7 +1326,7 @@ function initIntersectionObserver() {
         observer.unobserve(entry.target); // trigger animation once
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.05 });
 
   document.querySelectorAll(".reveal").forEach(el => {
     observer.observe(el);
