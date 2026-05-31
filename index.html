@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Charles Tarog - Personal Portfolio. IT Student, Front-end Developer, UI/UX Designer, and Graphic Artist from the Philippines. Explore projects, certifications, and art.">
+  <link rel="icon" type="image/png" href="assets/logo/logo2.png">
+  <title>Charles Tarog | Portfolio</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Tailwind Config to extend theme colors -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            portfolio: {
+              black: '#000000',
+              white: '#FFFFFF',
+              cream: '#F7ECB3',
+              red: '#EB4437',
+              green: '#AECC97',
+              teal: '#40605A',
+              dark: '#0B2428',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-portfolio-dark text-portfolio-white noise select-none">
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress-bar"
+    class="fixed top-0 left-0 h-[3px] bg-portfolio-red z-[1001] w-0 transition-all duration-100 ease-out"></div>
+
+  <!-- Header Nav -->
+  <header id="header-nav-container"
+    class="fixed top-0 left-0 right-0 z-[100] py-4 px-4 md:px-12 transition-all duration-400">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+
+      <!-- Brand Logo -->
+      <a href="#hero" onclick="event.preventDefault(); scrollToSection('hero');"
+        class="flex items-center gap-3 hover:scale-105 transition-transform duration-200">
+
+        <img src="assets/logo/logo2.png" alt="Charles Logo" class="h-10 w-auto">
+
+        <span class="font-brush text-2xl text-portfolio-red tracking-wider">
+          CHARL.ES
+        </span>
+      </a>
+
+      <!-- Desktop Navigation links (About > Projects > Certifications > Contact) -->
+      <nav class="hidden md:flex items-center gap-8">
+        <button id="nav-lnk-about" onclick="scrollToSection('about')"
+          class="nav-link font-brush font-regular text-xs tracking-widest uppercase py-1 border-none bg-none cursor-pointer"
+          style="color: #EB4437;">
+          About
+        </button>
+        <button id="nav-lnk-certifications" onclick="scrollToSection('certifications')"
+          class="nav-link font-brush font-regular text-xs tracking-widest uppercase py-1 border-none bg-none cursor-pointer"
+          style="color: #EB4437;">
+          Certifications
+        </button>
+        <button id="nav-lnk-contact" onclick="scrollToSection('contact')"
+          class="nav-link font-brush font-regular text-xs tracking-widest uppercase py-1 border-none bg-none cursor-pointer"
+          style="color: #EB4437;">
+          Contact
+        </button>
+        <button id="nav-lnk-projects" onclick="scrollToSection('projects')"
+          class="nav-link font-brush font-regular text-xs tracking-widest uppercase py-1 border-none bg-none cursor-pointer"
+          style="color: #EB4437;">
+          Projects
+        </button>
+      </nav>
+
+      <!-- Hamburger Menu for Mobile -->
+      <button onclick="toggleMobileMenu(true)"
+      class="md:hidden flex items-center justify-center cursor-pointer border-none bg-transparent"
+      id="hamburger-menu-btn">
+      <svg id="hamburger-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"
+      stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu Overlay -->
+  <div id="mobile-menu-drawer" class="mobile-nav">
+    <!-- Brand Logo -->
+    <a href="#hero" onclick="event.preventDefault(); scrollToSection('hero');"
+      class="absolute top-6 left-6 flex items-center gap-3 hover:scale-105 transition-transform duration-200">
+
+      <img src="assets/logo/logo2.png" alt="Charles Logo" class="h-10 w-auto">
+
+      <span class="font-brush text-2xl text-portfolio-red tracking-wider">
+        CHARL.ES
+      </span>
+    </a>
+
+    <button onclick="toggleMobileMenu(false)"
+      class="absolute top-6 right-6 text-portfolio-red hover:text-portfolio-red text-3xl cursor-pointer border-none bg-transparent">✕</button>
+
+    <button id="nav-lnk-mob-about" onclick="scrollToSection('about')"
+      class="font-brush text-3xl tracking-wider border-none bg-transparent cursor-pointer"
+      style="color: #EB4437;">About</button>
+    <button id="nav-lnk-mob-certifications" onclick="scrollToSection('certifications')"
+      class="font-brush text-3xl tracking-wider border-none bg-transparent cursor-pointer"
+      style="color: #EB4437;">Certifications</button>
+    <button id="nav-lnk-mob-contact" onclick="scrollToSection('contact')"
+      class="font-brush text-3xl tracking-wider border-none bg-transparent cursor-pointer"
+      style="color: #EB4437;">Contact</button>
+    <button id="nav-lnk-mob-projects" onclick="scrollToSection('projects')"
+      class="font-brush text-3xl tracking-wider border-none bg-transparent cursor-pointer"
+      style="color: #EB4437;">Projects</button>
+  </div>
+
+  <main>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen relative overflow-hidden flex items-center pt-24 md:pt-16 pb-16">
+
+      <!-- Blurred Radial Background Glows -->
+      <div class="absolute inset-0 bg-gradient-to-br from-portfolio-dark via-[#112a2e] to-portfolio-dark z-0"></div>
+      <div
+        class="absolute -top-40 -right-40 w-[450px] h-[450px] rounded-full bg-portfolio-red/10 blur-[50px] pointer-events-none">
+      </div>
+      <div
+        class="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full bg-portfolio-teal/35 blur-[50px] pointer-events-none">
+      </div>
+
+      <!-- Grid Dots Layout Overlay -->
+      <div class="absolute inset-0 pointer-events-none z-0"
+        style="background-image: radial-gradient(circle, rgba(174,204,151,0.06) 1px, transparent 1px); background-size: 35px 35px;">
+      </div>
+
+      <div
+        class="relative z-10 max-w-6xl mx-auto px-4 md:px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+
+        <!-- Left Side: Overlapping Image Container (Mobile First Order Shifted on Desktop) -->
+        <div class="order-2 md:order-1 md:col-span-5 relative animate-slide-left">
+
+          <!-- Dashed Decorative Spinning Ring behind image -->
+          <div
+            class="absolute -inset-6 rounded-2xl border-2 border-dashed border-portfolio-red/20 animate-spin-slow pointer-events-none">
+          </div>
+
+          <!-- Image Box styled with red offset shadow -->
+          <div
+            class="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 -mb-10 md:mb-0 transition-transform duration-300 hover:scale-[1.02]">
+            <div class="w-full aspect-[3/4] shimmer-bg flex flex-col items-center justify-center p-6 text-center">
+              <!-- <span class="text-6xl mb-4 animate-bounce">🤵</span>
+              <p class="text-portfolio-cream font-bold text-xs uppercase tracking-widest">Charles Tarog</p>
+              <p class="text-portfolio-green text-[10px] uppercase tracking-wider mt-1">(Place Photo here)</p> -->
+              <img src="assets/profile picture/charles.png" alt="Charles Tarog"
+                class="w-full aspect-[3/4] object-cover">
+            </div>
+
+            <!-- Float location pill overlay -->
+            <!-- <div
+              class="absolute bottom-6 right-6 bg-portfolio-cream text-portfolio-dark rounded-xl px-4 py-2 text-[10px] md:text-xs font-black shadow-lg animate-float flex items-center gap-1">
+              <span>📍</span> Philippines
+            </div> -->
+          </div>
+        </div>
+
+        <!-- Right Side: Text & Actions Intro -->
+        <div class="order-1 md:order-2 md:col-span-7 flex flex-col justify-center animate-fade-up">
+
+          <!-- Single main Page Title H1 -->
+          <h1 class="text-4xl md:text-6xl font-[Inter] font-light tracking-tight text-white mb-2 leading-none">
+            Hi! I'm
+            <span class="font-brush text-portfolio-cream text-5xl md:text-7xl block pl-10 text-center">
+              Charles
+            </span>
+          </h1>
+
+          <h2
+            class="font-[Inter] font-bold text-xl md:text-3xl text-portfolio-white tracking-widest uppercase mb-4 text-right md:pr-[110px]">
+            DARWIN TAROG
+          </h2>
+
+          <!-- Typewriter Effect -->
+          <p class="text-portfolio-green font-semibold text-sm md:text-lg mb-6 min-h-[26px] flex items-center justify-center md:justify-start">
+            <span id="hero-typewriter-text"></span><span class="cursor text-portfolio-red ml-1 font-bold">|</span>
+          </p>
+
+          <!-- Interactive hover tags (Hover bg-portfolio-red, white text) -->
+          <div class="flex flex-wrap gap-2 mb-6 max-w-lg justify-center md:justify-start">
+            <span
+              class="tag-pill px-3 py-1.5 rounded-full border border-portfolio-green/45 text-portfolio-green text-[10px] font-black uppercase tracking-wider bg-portfolio-teal/15">
+              Information Technology
+            </span>
+            <span
+              class="tag-pill px-3 py-1.5 rounded-full border border-portfolio-green/45 text-portfolio-green text-[10px] font-black uppercase tracking-wider bg-portfolio-teal/15">
+              Front-end Development
+            </span>
+            <span
+              class="tag-pill px-3 py-1.5 rounded-full border border-portfolio-green/45 text-portfolio-green text-[10px] font-black uppercase tracking-wider bg-portfolio-teal/15">
+              UI/UX Design
+            </span>
+            <span
+              class="tag-pill px-3 py-1.5 rounded-full border border-portfolio-green/45 text-portfolio-green text-[10px] font-black uppercase tracking-wider bg-portfolio-teal/15">
+              Graphic Design
+            </span>
+          </div>
+
+          <!-- Professional Bio snippet -->
+          <p class="text-white/60 text-xs md:text-sm leading-relaxed max-w-md mb-8 text-center md:text-left">
+            Specializing in UI/UX design, front-end development, and graphic design. Actively seeking an internship to elevate 
+            these skills while remaining open to exploring other IT fields to broaden my expertise.
+          </p>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+            <button onclick="scrollToSection('projects')"
+              class="px-6 py-3 rounded-xl bg-portfolio-red text-white font-extrabold text-xs md:text-sm tracking-wider uppercase border-none cursor-pointer transition-all duration-300 hover:shadow-lg hover:shadow-portfolio-red/35 hover:-translate-y-0.5">
+              View Works
+            </button>
+
+            <!-- Download resume (auto-download PDF config) -->
+            <a href="resume.pdf" download="Charles_Tarog_Resume.pdf" target="_blank" rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-transparent border-2 border-portfolio-cream text-portfolio-cream font-extrabold text-xs md:text-sm tracking-wider uppercase cursor-pointer hover:bg-portfolio-cream hover:text-portfolio-dark transition-all duration-200">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download Resume
+            </a>
+          </div>
+
+          <!-- Helper note for resume setup -->
+          <!-- <p class="text-white/30 text-[9px] mt-2.5">
+            💡 Developer Tip: Place your resume PDF named <code class="text-portfolio-red font-mono">resume.pdf</code>
+            in this folder.
+          </p> -->
+        </div>
+      </div>
+
+      <!-- Floating scroll down indicator -->
+      <div
+        class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 opacity-40 animate-pulse pointer-events-none hidden md:flex">
+        <span class="text-[9px] tracking-widest text-white/50 uppercase">Scroll</span>
+        <div class="w-[1.5px] h-9 bg-gradient-to-b from-portfolio-red to-transparent"></div>
+      </div>
+    </section>
+
+    <!-- Skills Band Marquee -->
+    <div class="bg-portfolio-red py-3 overflow-hidden select-none border-y border-white/5 relative z-10">
+      <div class="marquee-wrap">
+        <div class="marquee-track gap-10 md:gap-14">
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="HTML5">
+            HTML5 <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="CSS3">
+            CSS3 <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="JavaScript">
+            JAVASCRIPT <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="Tailwind CSS">
+            TAILWIND CSS <span class="opacity-40">•</span>
+          </span>
+
+          <!-- <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="React JS">
+            REACT JS <span class="opacity-40">•</span>
+          </span> -->
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="Figma">
+            FIGMA <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="Photoshop">
+            PHOTOSHOP <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="Illustrator">
+            ILLUSTRATOR <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="assets/about/skills/canva_logo.png" class="w-4 h-4 md:w-5 md:h-5" alt="Canva">
+            CANVA <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="assets/about/skills/affinity_logo.png" class="w-4 h-4 md:w-5 md:h-5" alt="Affinity">
+            AFFINITY <span class="opacity-40">•</span>
+          </span>
+
+          <!-- ─── Repeat for seamless loop ─── -->
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="HTML5">
+            HTML5 <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="CSS3">
+            CSS3 <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="JavaScript">
+            JAVASCRIPT <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="Tailwind CSS">
+            TAILWIND CSS <span class="opacity-40">•</span>
+          </span>
+
+          <!-- <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="React JS">
+            REACT JS <span class="opacity-40">•</span>
+          </span> -->
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="Figma">
+            FIGMA <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-original.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="Photoshop">
+            PHOTOSHOP <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/illustrator/illustrator-plain.svg"
+              class="w-4 h-4 md:w-5 md:h-5" alt="Illustrator">
+            ILLUSTRATOR <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="assets/about/skills/canva_logo.png" class="w-4 h-4 md:w-5 md:h-5" alt="Canva">
+            CANVA <span class="opacity-40">•</span>
+          </span>
+
+          <span
+            class="text-white font-extrabold text-[10px] md:text-xs tracking-widest uppercase flex items-center gap-2">
+            <img src="assets/about/skills/affinity_logo.png" class="w-4 h-4 md:w-5 md:h-5" alt="Affinity">
+            AFFINITY <span class="opacity-40">•</span>
+          </span>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section (Vibrant Light BG Theme) -->
+    <section id="about" class="py-20 md:py-28 bg-portfolio-white text-portfolio-black reveal">
+      <div class="max-w-6xl mx-auto px-4 md:px-12">
+        <!-- <p class="text-portfolio-red font-black text-xs md:text-sm tracking-[0.2em] uppercase mb-2">Who Am I</p> -->
+        <h2 class="font-brush text-5xl md:text-6xl text-portfolio-red mb-12">ABOUT</h2>
+
+        <!-- Bio Paragraph and Image block -->
+        <div class="flex flex-wrap gap-12 items-start justify-between">
+          <div class="w-full md:w-3/5">
+            <p class="text-portfolio-teal/85 font-semibold text-sm md:text-base leading-relaxed mb-6">
+              I am an upcoming 4th-year BSIT student at PLV. This website serves as my personal gallery, 
+              where I combine my traditional art background with front-end development and UI/UX 
+              design to build creative digital projects.
+            </p>
+            <p class="text-portfolio-teal/85 font-semibold text-sm md:text-base leading-relaxed">
+              My goal is to blend technology with visual artistry. While my main focus is on design and development, I am highly open to other IT roles during my internship. 
+              I am eager to explore different fields, learn from professionals, 
+              and expand my overall IT skills.
+            </p>
+          </div>
+
+          <!-- Secondary profile thumbnail -->
+          <div class="w-full md:w-auto flex-shrink-0 flex justify-center md:block">
+            <div
+              class="w-48 h-48 rounded-2xl overflow-hidden border-4 border-portfolio-red shadow-xl hover:-translate-y-1.5 transition-all duration-300">
+              <div class="w-full h-full shimmer-bg flex items-center justify-center text-4xl">
+                <img src="assets/profile picture/charles.jpg" alt="Charles Tarog" class="w-full h-full object-contain">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Education Sub-section (dynamic nodes injected) -->
+        <div class="mt-20">
+          <h3 class="font-brush text-3xl md:text-4xl text-portfolio-red mb-8">EDUCATION</h3>
+          <div id="education-cards-container" class="flex flex-wrap gap-6"></div>
+        </div>
+
+        <!-- Skills Container Sub-section (Dynamic App icons with slide up tooltip) -->
+        <div class="mt-20">
+          <h3 class="font-brush text-3xl md:text-4xl text-portfolio-red mb-8">SKILLS</h3>
+
+          <!-- Row 1: Front-end development -->
+          <div
+            class="bg-gray-50 border border-gray-200 rounded-2xl p-6 mb-6 shadow-sm flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6">
+            <p
+              class="text-portfolio-teal font-black text-xs uppercase tracking-widest md:min-w-[160px] flex-shrink-0">
+              Front-end Development</p>
+            <div class="hidden md:block w-px h-8 bg-gray-200 flex-shrink-0"></div>
+            <div id="skills-frontend-container" class="flex flex-wrap gap-3"></div>
+          </div>
+
+          <!-- Row 2: Design tools -->
+          <div
+            class="bg-gray-50 border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col md:flex-row-reverse items-start md:items-center gap-4 md:gap-6">
+            <p
+              class="text-portfolio-teal font-black text-xs uppercase tracking-widest md:min-w-[160px] flex-shrink-0 md:text-right">
+              UI/UX &amp; Graphic Design Tools</p>
+            <div class="hidden md:block w-px h-8 bg-gray-200 flex-shrink-0"></div>
+            <div id="skills-design-container" class="flex flex-wrap gap-3"></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications & Seminars Section (Solid Crimson Red theme) -->
+    <section id="certifications" class="py-20 md:py-28 bg-portfolio-red text-portfolio-white reveal">
+      <div class="max-w-6xl mx-auto px-4 md:px-12">
+        <p class="text-portfolio-cream font-black text-xs md:text-sm tracking-[0.2em] uppercase mb-2">Credentials</p>
+        <h2 class="font-brush text-4xl md:text-6xl text-white mb-12">CERTIFICATIONS</h2>
+
+        <!-- Certifications Cards Grid -->
+        <div id="certs-grid-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"></div>
+
+        <h2 class="font-brush text-5xl md:text-6xl text-white mt-24 mb-9">SEMINARS</h2>
+        <!-- Seminars Carousel (White Outer Container - No text heading) -->
+        <div class="mt-20 bg-white border border-gray-200/50 rounded-3xl p-6 md:p-10 shadow-2xl relative group">
+          <!-- Navigation Buttons -->
+          <button id="seminars-prev-btn"
+            class="absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-portfolio-dark border border-white/10 text-white flex items-center justify-center text-xl cursor-pointer hover:bg-portfolio-teal hover:border-portfolio-teal hover:scale-105 transition-all duration-200 shadow-xl md:opacity-0 md:group-hover:opacity-100 opacity-100 focus:opacity-100 select-none"
+            aria-label="Previous Seminars">
+            ‹
+          </button>
+
+          <!-- Seminars Carousel Container -->
+          <div id="seminars-carousel"
+            class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-none">
+            <!-- Dynamically populated via JS -->
+          </div>
+
+          <button id="seminars-next-btn"
+            class="absolute -right-4 md:-right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 rounded-full bg-portfolio-dark border border-white/10 text-white flex items-center justify-center text-xl cursor-pointer hover:bg-portfolio-teal hover:border-portfolio-teal hover:scale-105 transition-all duration-200 shadow-xl md:opacity-0 md:group-hover:opacity-100 opacity-100 focus:opacity-100 select-none"
+            aria-label="Next Seminars">
+            ›
+          </button>
+
+          <!-- Indicators / Page Dots -->
+          <div id="seminars-indicators" class="flex justify-center gap-2 mt-6">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact Me Section (Cream/Light green palette theme) -->
+    <section id="contact" class="py-20 md:py-28 bg-white text-portfolio-dark reveal">
+      <div class="max-w-6xl mx-auto px-4 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+
+        <!-- Description copy text - shown first on mobile, right on desktop -->
+        <div class="md:col-span-7 md:order-2 flex flex-col justify-center">
+          <p class="text-portfolio-teal font-black text-xs md:text-sm tracking-[0.2em] uppercase mb-2">Get In Touch</p>
+          <h2 class="font-brush text-5xl md:text-6xl text-portfolio-teal mb-6">CONTACT ME</h2>
+          <p class="text-portfolio-teal font-semibold text-sm md:text-base leading-relaxed mb-6">
+            Feel free to reach out! Whether it's for an internship opportunity, a project collaboration, or a chat about tech and design, 
+            I'd love to connect. I am actively seeking an OJT placement to learn from industry professionals and expand my skills across the IT field.
+          </p>
+          <p class="text-portfolio-teal/70 font-semibold text-xs leading-relaxed">
+            "Thanks for visiting and reaching out! I'll respond as soon as possible, usually within 24 hours. Looking forward to connecting with you!"
+          </p>
+        </div>
+
+        <!-- Contact details links -->
+        <div class="md:col-span-5 md:order-1 flex flex-col gap-4">
+          <a href="mailto:charlestarog02@gmail.com"
+            class="overflow-hidden contact-card bg-white p-4 rounded-2xl flex items-center gap-3 border border-portfolio-teal/15 shadow-sm text-decoration-none">
+            <div class="w-11 h-11 rounded-xl bg-portfolio-red flex items-center justify-center text-xl flex-shrink-0">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </div>
+            <div class="min-w-0">
+              <p class="font-black text-[10px] tracking-wider uppercase text-portfolio-teal">Email</p>
+              <p class="text-xs md:text-sm text-portfolio-dark font-extrabold mt-0.5">charlestarog02@gmail.com</p>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/charlestarog02" target="_blank"
+            class="overflow-hidden contact-card bg-white p-4 rounded-2xl flex items-center gap-3 border border-portfolio-teal/15 shadow-sm text-decoration-none">
+            <div
+              class="w-11 h-11 rounded-xl bg-[#0077B5] flex items-center justify-center text-xl flex-shrink-0 text-white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </div>
+            <div class="min-w-0">
+              <p class="font-black text-[10px] tracking-wider uppercase text-portfolio-teal">LinkedIn</p>
+              <p class="text-xs md:text-sm text-portfolio-dark font-extrabold mt-0.5">linkedin.com/in/charlestarog02</p>
+            </div>
+          </a>
+
+          <a href="https://github.com/charlesbraun2" target="_blank"
+            class="overflow-hidden contact-card bg-white p-4 rounded-2xl flex items-center gap-3 border border-portfolio-teal/15 shadow-sm text-decoration-none">
+            <div
+              class="w-11 h-11 rounded-xl bg-portfolio-dark flex items-center justify-center text-xl flex-shrink-0 text-white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+              </svg>
+            </div>
+            <div class="min-w-0">
+              <p class="font-black text-[10px] tracking-wider uppercase text-portfolio-teal">GitHub</p>
+              <p class="text-xs md:text-sm text-portfolio-dark font-extrabold mt-0.5">github.com/charlesbraun2</p>
+            </div>
+          </a>
+
+
+          <a href="https://www.facebook.com/charlestarog02" target="_blank"
+            class="overflow-hidden contact-card bg-white p-4 rounded-2xl flex items-center gap-3 border border-portfolio-teal/15 shadow-sm text-decoration-none">
+            <div
+              class="w-11 h-11 rounded-xl bg-[#1877F2] flex items-center justify-center text-xl flex-shrink-0 text-white">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+              </svg>
+            </div>
+            <div class="min-w-0">
+              <p class="font-black text-[10px] tracking-wider uppercase text-portfolio-teal">Facebook</p>
+              <p class="text-xs md:text-sm text-portfolio-dark font-extrabold mt-0.5">facebook.com/charlestarog02</p>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Projects Section (Dark theme) -->
+    <section id="projects" class="py-20 md:py-28 bg-portfolio-dark text-portfolio-white reveal">
+      <div class="max-w-6xl mx-auto px-4 md:px-12">
+        <p class="text-portfolio-green font-black text-xs md:text-sm tracking-[0.2em] uppercase mb-2">My Work</p>
+        <h2 class="font-brush text-5xl md:text-6xl text-portfolio-cream mb-6">PROJECTS</h2>
+        <p class="text-white/50 text-xs md:text-sm leading-relaxed max-w-xl mb-12">
+          A curated collection of my academic and personal projects built throughout my BSIT journey at PLV. 
+          From front-end systems and UI/UX mockups to graphic design work and traditional artworks — each piece reflects
+          my growth, creativity, and passion for building purposeful digital experiences.
+
+        </p>
+
+        <!-- Category filter tabs -->
+        <div id="filter-tabs-container" class="flex flex-wrap gap-2.5 mb-10"></div>
+
+        <!-- Dynamic Featured Card container ("The Big Container") -->
+        <div id="featured-project-container"
+          class="bg-white/5 border border-white/10 rounded-3xl overflow-hidden shadow-2xl mb-12"></div>
+
+        <!-- Other minor projects grid -->
+        <h3 class="text-xs uppercase tracking-widest text-white/40 font-bold mb-6">Other works in this category</h3>
+        <div id="other-projects-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"></div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer Section (Arrangement matching header nav links) -->
+  <footer class="bg-white pt-9 px-4 md:px-12 relative z-10 text-portfolio-red">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row flex-wrap justify-center md:justify-between items-center md:items-start gap-10 md:gap-12">
+
+      <!-- Left: Brand + Tagline + Social Icons -->
+      <div class="flex flex-col items-center text-center">
+        <div class="font-brush text-3xl text-portfolio-red mb-1">CHARL.ES</div>
+        <p class="text-portfolio-red text-xs font-sans font-semibold tracking-wider my-3">Let's Stay Connected!</p>
+
+
+        <div class="flex gap-2.5 mt-2">
+        <a href="https://www.facebook.com/charlestarog02" target="_blank"
+          class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:scale-110"
+          style="background-color: #EB4437;"
+          onmouseover="this.style.backgroundColor='#c0392b';"
+          onmouseout="this.style.backgroundColor='#EB4437';">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+          </svg>
+        </a>
+
+        <a href="mailto:charlestarog02@gmail.com"
+          class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:scale-110"
+          style="background-color: #EB4437;"
+          onmouseover="this.style.backgroundColor='#c0392b';"
+          onmouseout="this.style.backgroundColor='#EB4437';">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+          </svg>
+        </a>
+
+        <a href="https://www.linkedin.com/in/charlestarog02" target="_blank"
+          class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:scale-110"
+          style="background-color: #EB4437;"
+          onmouseover="this.style.backgroundColor='#c0392b';"
+          onmouseout="this.style.backgroundColor='#EB4437';">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+
+        <a href="https://github.com/charlesbraun2" target="_blank"
+          class="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:scale-110"
+          style="background-color: #EB4437;"
+          onmouseover="this.style.backgroundColor='#c0392b';"
+          onmouseout="this.style.backgroundColor='#EB4437';">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+          </svg>
+        </a>
+      </div>
+      </div>
+
+      <!-- Center: Navigation -->
+      <div class="flex flex-col items-center">
+        <nav class="flex flex-col gap-2.5 items-center">
+          <button onclick="scrollToSection('about')"
+            class="nav-link relative font-brush text-2xl border-none bg-transparent cursor-pointer opacity-100 transition-opacity"
+            style="color: #EB4437;">About</button>
+          <button onclick="scrollToSection('certifications')"
+            class="nav-link relative font-brush text-2xl border-none bg-transparent cursor-pointer opacity-100 transition-opacity"
+            style="color: #EB4437;">Certifications</button>
+          <button onclick="scrollToSection('contact')"
+            class="nav-link relative font-brush text-2xl border-none bg-transparent cursor-pointer opacity-100 transition-opacity"
+            style="color: #EB4437;">Contact</button>
+          <button onclick="scrollToSection('projects')"
+            class="nav-link relative font-brush text-2xl border-none bg-transparent cursor-pointer opacity-100 transition-opacity"
+            style="color: #EB4437;">Projects</button>
+        </nav>
+      </div>
+
+      <!-- Right: Logo -->
+      <div class="flex flex-col items-center justify-center gap-2">
+        <img src="assets/logo/logo2.png" alt="Charles Logo" class="h-20 w-auto opacity-90">
+        <span class="font-brush text-2xl text-portfolio-red tracking-wider">CHARL.ES</span>
+      </div>
+
+    </div>
+
+    <!-- Copyright Bar -->
+    <div class="bg-portfolio-red mt-10 -mx-4 md:-mx-12 px-4 md:px-12 py-3 flex justify-center items-center">
+      <p class="text-white font-bold text-[10px] md:text-xs tracking-widest uppercase text-center">
+        © 2025. CHARL.ES · All Rights Reserved
+      </p>
+    </div>
+  </footer>
+  
+
+  <!-- Fixed Back to Top Button -->
+  <button id="back-to-top-btn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="back-top hidden"
+    aria-label="Back to top">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15" />
+    </svg>
+  </button>
+
+  <!-- Root Overlay Target Container for Zoom Lightbox Modals -->
+  <div id="modal-overlay-root" class="hidden"></div>
+
+  <!-- Main Application Script -->
+  <script src="app.js"></script>
+</body>
+
+</html>
