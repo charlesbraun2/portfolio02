@@ -944,12 +944,12 @@ window.openCertModal = function (idx) {
 
   const html = `
     <div class="fixed inset-0 z-[1000] bg-portfolio-dark/95 backdrop-blur-md flex items-center justify-center p-4 animate-fade-in" onclick="closeModal()">
-      <div class="relative max-w-2xl w-full bg-portfolio-black/20 rounded-2xl overflow-hidden p-2 flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+      <div class="relative max-w-2xl w-full bg-portfolio-black/20 rounded-2xl p-2 flex flex-col items-center justify-center" onclick="event.stopPropagation()">
         <!-- Close -->
-        <button onclick="closeModal()" class="absolute -top-3 -right-3 md:top-3 md:right-3 w-8 h-8 rounded-full bg-portfolio-red text-white flex items-center justify-center font-bold text-sm cursor-pointer border-none z-50 hover:bg-portfolio-cream hover:text-portfolio-dark transition-colors">✕</button>
+        <button onclick="closeModal()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-portfolio-red text-white flex items-center justify-center font-bold text-sm cursor-pointer border-none z-50 hover:bg-portfolio-cream hover:text-portfolio-dark transition-colors">✕</button>
 
         <!-- Zoomed Certificate Image -->
-        <div class="w-full aspect-[4/3] rounded-xl overflow-hidden">
+        <div class="w-full aspect-[4/3] rounded-xl overflow-hidden mt-2">
           <img 
             src="${cert.img}" 
             alt="${cert.title}" 
