@@ -386,6 +386,17 @@ const PROJECTS = [
           ], 
     view: "#", 
     type: "traditional" },
+
+    { id: 25, 
+    title: "Client-based Brand board Design", 
+    categories: ["graphic"], 
+    tags: ["Brandboard","Photoshop", "Multimedia","Adobe"], 
+    date: "2025", 
+    desc: "Client-based brand board design for a fictional client, created with Photoshop for a Midterm Project in Multimedia subject.", 
+    imgs: ["assets/projects/arts & graphic design/multimedia works/gelo_mangoshake.png"], 
+    view: "#", 
+    type: "graphic" },
+
 ];
 
 
